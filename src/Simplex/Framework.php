@@ -10,8 +10,10 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolverInterface;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\HttpKernel;
 
-class Framework implements HttpKernelInterface
+class Framework extends HttpKernel
+
 {
     public function __construct(
         private EventDispatcher $dispatcher,

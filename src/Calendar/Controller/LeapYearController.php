@@ -8,17 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LeapYearController
 {
-    public function index(Request $request, int $year): Response
-{
-    $leapYear = new LeapYear();
-    if ($leapYear->isLeapYear($year)) {
-        $response = new Response('Yep, this is a leap year!');
-    } else {
-        $response = new Response('Nope, this is not a leap year.');
+    public function index(int $year): string
+    {
+        $leapYear = new LeapYear();
+        if ($leapYear->isLeapYear($year)) {
+            return 'Yep, this is a leap year! ';
+        }
+
+        return 'Nope, this is not a leap year.';
     }
-
-    $response->setTtl(10);
-
-    return $response;
-}
 }
