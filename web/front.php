@@ -18,6 +18,10 @@ $controllerResolver = new ControllerResolver();
 $argumentResolver = new ArgumentResolver();
 
 $framework = new Simplex\Framework($dispatcher, $matcher, $controllerResolver, $argumentResolver);
+$framework = new HttpKernel\HttpCache\HttpCache(
+    $framework,
+    new HttpKernel\HttpCache\Store(__DIR__.'/../cache')
+);
 $response = $framework->handle($request);
 
 $response->send();
